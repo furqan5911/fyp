@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Display - Accident Detection Web App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/video.css') }}">
+</head>
+<body>
+    <h2>Accident Detection Web App</h2>
+    <button class="logout-button" onclick="window.location.href='{{ url_for('logout') }}'">Logout</button>
+    <div class="container">
+        <h1>Video Display</h1>
+        <video class="video" width="600" controls>
+            <source src="{{ url_for('static', filename='uploads/' + video_file) }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <form class="button-container" method="post" action="{{ url_for('predict') }}">
+        <input type="hidden" name="video_file" value="{{ video_file }}">
+        <button class="process-button" type="submit">Start Processing</button>
+    </form>
+</body>
+</html>
